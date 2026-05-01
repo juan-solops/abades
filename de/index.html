@@ -45,14 +45,17 @@
         <a href="#gallery">Fotos</a>
         <a href="#book" class="nav-cta">Buchen</a>
 
-        <div class="language-switcher">
-          <a href="../en/">EN</a>
-          <a href="../es/">ES</a>
-          <a href="../fr/">FR</a>
-          <a href="../de/" class="active">DE</a>
-          <a href="../nl/">NL</a>
-          <a href="../ru/">RU</a>
-        </div>
+        <div class="language-dropdown">
+  <select aria-label="Sprache wählen" onchange="window.location.href=this.value;">
+    <option value="../en/">English</option>
+    <option value="../es/">Español</option>
+    <option value="../fr/">Français</option>
+    <option value="../de/" selected>Deutsch</option>
+    <option value="../nl/">Nederlands</option>
+    <option value="../ru/">Русский</option>
+  </select>
+</div>
+
       </nav>
     </div>
   </header>

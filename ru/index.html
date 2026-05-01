@@ -45,14 +45,17 @@
         <a href="#gallery">Фото</a>
         <a href="#book" class="nav-cta">Бронировать</a>
 
-        <div class="language-switcher">
-          <a href="../en/">EN</a>
-          <a href="../es/">ES</a>
-          <a href="../fr/">FR</a>
-          <a href="../de/">DE</a>
-          <a href="../nl/">NL</a>
-          <a href="../ru/" class="active">RU</a>
-        </div>
+        <div class="language-dropdown">
+  <select aria-label="Выбрать язык" onchange="window.location.href=this.value;">
+    <option value="../en/">English</option>
+    <option value="../es/">Español</option>
+    <option value="../fr/">Français</option>
+    <option value="../de/">Deutsch</option>
+    <option value="../nl/">Nederlands</option>
+    <option value="../ru/" selected>Русский</option>
+  </select>
+</div>
+
       </nav>
     </div>
   </header>
