@@ -24,6 +24,44 @@
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="../styles.css" />
+   <!-- Local Business / Lodging Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Casa Abades Tenerife",
+    "description": "A peaceful holiday home in Abades, Arico, South Tenerife, close to the beach, local restaurants, diving spots and coastal walks.",
+    "url": "https://juan-solops.github.io/abades/",
+    "image": "https://juan-solops.github.io/abades/images/hero.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Abades",
+      "addressRegion": "Canary Islands",
+      "addressCountry": "ES"
+    },
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Wi-Fi",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Kitchen",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Close to beach",
+        "value": true
+      }
+    ],
+    "sameAs": [
+      "https://www.airbnb.com/your-listing-url",
+      "https://www.booking.com/your-listing-url"
+    ]
+  }
+  </script>
 </head>
 
 <body>
