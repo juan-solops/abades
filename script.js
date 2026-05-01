@@ -19,3 +19,11 @@ if (navToggle && mainNav) {
 if (year) {
   year.textContent = new Date().getFullYear();
 }
+const languageSelects = document.querySelectorAll(".language-select");
+
+languageSelects.forEach((select) => {
+  select.addEventListener("change", () => {
+    window.location.href = select.value;
+  });
+});
+
