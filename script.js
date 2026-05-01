@@ -4,7 +4,7 @@ const year = document.getElementById("year");
 
 if (navToggle && mainNav) {
   navToggle.addEventListener("click", () => {
-    mainNav.classList.toggle("open");
+    mainNav.classList.toggle("open");§
   });
 
   const navLinks = mainNav.querySelectorAll("a");
@@ -19,9 +19,8 @@ if (navToggle && mainNav) {
 if (year) {
   year.textContent = new Date().getFullYear();
 }
-const languageSelects = document.querySelectorAll(".language-select");
 
-languageSelects.forEach((select) => {
+(document.querySelectorAll(".language-select")).forEach((select) => {
   select.addEventListener("change", () => {
     window.location.href = select.value;
   });
