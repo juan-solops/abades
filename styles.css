@@ -1,4 +1,887 @@
-/* Language Landing Page */
+/* =========================================================
+   Casa Abades Tenerife - Complete Stylesheet
+   File location: /styles.css
+   ========================================================= */
+
+/* ------------------------------
+   1. Global Variables
+------------------------------ */
+
+:root {
+  --color-white: #ffffff;
+  --color-cream: #f7f2ea;
+  --color-sand: #eadcc8;
+  --color-blue: #157a8c;
+  --color-blue-dark: #0d4f5c;
+  --color-blue-soft: #e8f4f6;
+  --color-text: #243238;
+  --color-muted: #66777d;
+  --color-border: rgba(36, 50, 56, 0.14);
+
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container-width: 1180px;
+
+  --radius-small: 12px;
+  --radius-medium: 20px;
+  --radius-large: 32px;
+
+  --shadow-soft: 0 20px 50px rgba(22, 42, 48, 0.14);
+  --shadow-card: 0 14px 34px rgba(22, 42, 48, 0.1);
+
+  --transition: 0.22s ease;
+}
+
+/* ------------------------------
+   2. Reset & Base Styles
+------------------------------ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* ------------------------------
+   3. Layout Helpers
+------------------------------ */
+
+.container {
+  width: min(100% - 2rem, var(--container-width));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.soft-bg {
+  background: var(--color-cream);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.image-column {
+  grid-template-columns: 1fr 1fr;
+}
+
+.centered {
+  text-align: center;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-blue);
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.section-label::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--color-blue);
+  border-radius: 999px;
+}
+
+.centered .section-label,
+.language-label {
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: clamp(2.7rem, 7vw, 6.2rem);
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+p {
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.rounded-image {
+  width: 100%;
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ------------------------------
+   4. Buttons
+------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.85rem 1.45rem;
+  border-radius: 999px;
+  border: 0;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-blue);
+  color: var(--color-white);
+  box-shadow: 0 12px 24px rgba(21, 122, 140, 0.24);
+}
+
+.btn-primary:hover {
+  background: var(--color-blue-dark);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-blue-dark);
+}
+
+.btn-secondary:hover {
+  background: var(--color-white);
+}
+
+.btn-light {
+  background: var(--color-white);
+  color: var(--color-blue-dark);
+}
+
+.btn-light:hover {
+  background: var(--color-blue-soft);
+}
+
+/* ------------------------------
+   5. Header & Navigation
+------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(36, 50, 56, 0.08);
+}
+
+.header-inner {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.logo-text {
+  white-space: nowrap;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.main-nav a {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 800;
+  transition: color var(--transition);
+}
+
+.main-nav a:hover {
+  color: var(--color-blue);
+}
+
+.nav-cta {
+  background: var(--color-blue);
+  color: var(--color-white) !important;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+}
+
+.nav-cta:hover {
+  background: var(--color-blue-dark);
+}
+
+/* Mobile menu button */
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: var(--color-blue-soft);
+  border-radius: 50%;
+  position: relative;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px auto;
+  background: var(--color-blue-dark);
+  border-radius: 999px;
+  transition: var(--transition);
+}
+
+/* ------------------------------
+   6. Language Dropdown
+------------------------------ */
+
+.language-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.25rem;
+}
+
+.language-dropdown select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-width: 150px;
+  padding: 0.65rem 2.4rem 0.65rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.language-dropdown::after {
+  content: "⌄";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-56%);
+  pointer-events: none;
+  font-weight: 900;
+  color: var(--color-blue-dark);
+}
+
+.language-dropdown select:focus {
+  outline: 3px solid rgba(21, 122, 140, 0.16);
+  border-color: var(--color-blue);
+}
+
+/* Old language switcher support.
+   Safe to keep in case one page still uses the old EN/ES/FR links. */
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.5rem;
+}
+
+.language-switcher a {
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  color: var(--color-text);
+  background: rgba(21, 122, 140, 0.08);
+}
+
+.language-switcher a:hover,
+.language-switcher a.active {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* ------------------------------
+   7. Hero Section
+------------------------------ */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 78px);
+  display: grid;
+  align-items: center;
+  padding: 7rem 0;
+  color: var(--color-white);
+  background:
+    linear-gradient(rgba(8, 37, 43, 0.5), rgba(8, 37, 43, 0.34)),
+    url("images/hero.jpg") center / cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(21, 122, 140, 0.28), transparent 34%),
+    linear-gradient(90deg, rgba(8, 37, 43, 0.45), rgba(8, 37, 43, 0.05));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 8px 36px rgba(0, 0, 0, 0.22);
+}
+
+.hero-text {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.hero-badges span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(8px);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+/* ------------------------------
+   8. Quick Info
+------------------------------ */
+
+.quick-info {
+  position: relative;
+  z-index: 2;
+  margin-top: -54px;
+  padding-bottom: 2rem;
+}
+
+.quick-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-white);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.quick-info-grid div {
+  padding: 1.6rem;
+  border-right: 1px solid var(--color-border);
+}
+
+.quick-info-grid div:last-child {
+  border-right: 0;
+}
+
+.quick-info-grid strong {
+  display: block;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  margin-bottom: 0.25rem;
+}
+
+.quick-info-grid span {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* ------------------------------
+   9. Intro Section
+------------------------------ */
+
+.intro-section {
+  padding-top: 4rem;
+}
+
+/* ------------------------------
+   10. Feature Cards & Amenities
+------------------------------ */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.feature-card {
+  background: var(--color-white);
+  border: 1px solid rgba(36, 50, 56, 0.08);
+  border-radius: var(--radius-medium);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.feature-card .icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  background: var(--color-blue-soft);
+  border-radius: 50%;
+  font-size: 1.35rem;
+}
+
+.feature-card p {
+  margin-bottom: 0;
+}
+
+.amenities-box {
+  margin-top: 2rem;
+  background: var(--color-white);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.amenities-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.amenities-list li {
+  position: relative;
+  padding-left: 1.7rem;
+  color: var(--color-muted);
+}
+
+.amenities-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-blue);
+  font-weight: 900;
+}
+
+/* ------------------------------
+   11. Mini List
+------------------------------ */
+
+.mini-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.mini-list span {
+  display: inline-flex;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: var(--color-blue-soft);
+  color: var(--color-blue-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+/* ------------------------------
+   12. Activities
+------------------------------ */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.activity-card {
+  background: var(--color-white);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.activity-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.activity-card div {
+  padding: 1.4rem;
+}
+
+.activity-card p {
+  margin-bottom: 0;
+}
+
+/* ------------------------------
+   13. Gallery
+------------------------------ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ------------------------------
+   14. Booking Section
+------------------------------ */
+
+.booking-section {
+  padding: 6rem 0;
+  background:
+    linear-gradient(rgba(8, 37, 43, 0.72), rgba(8, 37, 43, 0.72)),
+    url("images/terrace.jpg") center / cover no-repeat;
+}
+
+.booking-card {
+  max-width: 900px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--radius-large);
+  padding: 3.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.booking-card h2 {
+  color: var(--color-text);
+}
+
+.booking-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* ------------------------------
+   15. FAQ
+------------------------------ */
+
+.faq-section {
+  background: var(--color-white);
+}
+
+.faq-list {
+  max-width: 850px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-list details {
+  background: var(--color-cream);
+  border: 1px solid rgba(36, 50, 56, 0.08);
+  border-radius: var(--radius-medium);
+  padding: 1.2rem 1.4rem;
+}
+
+.faq-list summary {
+  color: var(--color-text);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+
+/* ------------------------------
+   16. Contact Section
+------------------------------ */
+
+.contact-section {
+  background: var(--color-cream);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.contact-list li {
+  color: var(--color-muted);
+}
+
+.contact-list a {
+  color: var(--color-blue-dark);
+  font-weight: 800;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.8rem;
+  background: var(--color-white);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form label {
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: 0.9rem 1rem;
+  color: var(--color-text);
+  background: var(--color-white);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 3px solid rgba(21, 122, 140, 0.14);
+  border-color: var(--color-blue);
+}
+
+/* ------------------------------
+   17. Footer
+------------------------------ */
+
+.site-footer {
+  background: #10272d;
+  color: var(--color-white);
+  padding: 4rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer-logo {
+  display: inline-flex;
+  color: var(--color-white);
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+}
+
+.site-footer p,
+.site-footer span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.site-footer h3 {
+  color: var(--color-white);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 0.55rem;
+  transition: color var(--transition);
+}
+
+.site-footer a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin-bottom: 0;
+}
+
+/* ------------------------------
+   18. Floating Book Button
+------------------------------ */
+
+.floating-book-btn {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 900;
+  display: none;
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(21, 122, 140, 0.28);
+}
+
+/* ------------------------------
+   19. Root Language Landing Page
+------------------------------ */
 
 .language-page {
   min-height: 100vh;
@@ -32,10 +915,6 @@
   letter-spacing: 0.08em;
 }
 
-.language-label {
-  justify-content: center;
-}
-
 .language-card h1 {
   color: var(--color-text);
   font-size: clamp(2.4rem, 6vw, 4.8rem);
@@ -61,8 +940,8 @@
   color: var(--color-white);
   padding: 1rem 1.2rem;
   border-radius: 999px;
-  font-weight: 800;
-  transition: 0.2s ease;
+  font-weight: 900;
+  transition: transform var(--transition), background var(--transition);
 }
 
 .language-grid a:hover {
@@ -76,62 +955,226 @@
   color: var(--color-muted);
 }
 
-/* Dropdown Language Selector */
+/* ------------------------------
+   20. Responsive Styles
+------------------------------ */
 
-.language-dropdown {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 1rem;
-}
+@media (max-width: 1100px) {
+  .main-nav {
+    gap: 0.85rem;
+  }
 
-.language-dropdown select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  min-width: 150px;
-  padding: 0.65rem 2.4rem 0.65rem 1rem;
-  border: 1px solid rgba(36, 50, 56, 0.15);
-  border-radius: 999px;
-  background: var(--color-white);
-  color: var(--color-text);
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 800;
-  cursor: pointer;
-}
+  .main-nav a {
+    font-size: 0.9rem;
+  }
 
-.language-dropdown::after {
-  content: "⌄";
-  position: absolute;
-  right: 1rem;
-  pointer-events: none;
-  font-weight: 900;
-  color: var(--color-blue-dark);
-}
-
-.language-dropdown select:focus {
-  outline: 3px solid rgba(21, 122, 140, 0.16);
-  border-color: var(--color-blue);
+  .features-grid,
+  .activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 980px) {
+  .header-inner {
+    min-height: 72px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 72px;
+    left: 1rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.75rem;
+    background: var(--color-white);
+    border: 1px solid rgba(36, 50, 56, 0.08);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-small);
+  }
+
+  .main-nav a:hover {
+    background: var(--color-blue-soft);
+  }
+
+  .nav-cta {
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+
   .language-dropdown {
+    width: 100%;
     margin-left: 0;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1rem 0.2rem;
   }
 
   .language-dropdown select {
     width: 100%;
   }
+
+  .language-switcher {
+    margin-left: 0;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+  }
+
+  .two-column,
+  .image-column,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .quick-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-info-grid div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .quick-info-grid div:nth-child(1),
+  .quick-info-grid div:nth-child(2) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .floating-book-btn {
+    display: inline-flex;
+  }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 760px) {
+  .section {
+    padding: 4.5rem 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 6rem 0 7rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .booking-card {
+    padding: 2rem;
+  }
+
+  .booking-buttons {
+    flex-direction: column;
+  }
+
+  .booking-buttons .btn {
+    width: 100%;
+  }
+
+  .amenities-list {
+    grid-template-columns: 1fr;
+  }
+
   .language-card {
     padding: 2rem;
   }
 
   .language-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: min(100% - 1.25rem, var(--container-width));
+  }
+
+  .logo-text {
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .quick-info {
+    margin-top: -36px;
+  }
+
+  .quick-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-info-grid div {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .quick-info-grid div:last-child {
+    border-bottom: 0;
+  }
+
+  .features-grid,
+  .activity-grid,
+  .gallery-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card img {
+    height: 220px;
+  }
+
+  .contact-form {
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 2.45rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .language-card {
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  .language-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .floating-book-btn {
+    right: 0.8rem;
+    bottom: 0.8rem;
   }
 }
